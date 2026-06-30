@@ -27,13 +27,6 @@
         </div>
         <h1 class="title" id="mainTitle">오늘도 힘내세요!</h1>
         <p class="subtitle">위대한 여정은 언제나 단순한 생각 하나에서 시작됩니다.</p>
-        <div class="video-container">
-          <video id="rabbitVideo" src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Big_Buck_Bunny_alt.webm" autoplay loop muted playsinline></video>
-          <div class="video-controls">
-            <button class="control-btn" id="playPauseBtn" aria-label="재생/일시정지">❚❚</button>
-            <button class="control-btn" id="muteBtn" aria-label="음소거/음소거해제">🔇</button>
-          </div>
-        </div>
         <button class="action-btn" id="startBtn">시작하기</button>
       </div>
     </div>
@@ -78,32 +71,6 @@
       });
     }
 
-    // Video Custom Controls
-    const video = document.getElementById('rabbitVideo');
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    const muteBtn = document.getElementById('muteBtn');
-
-    if (video && playPauseBtn && muteBtn) {
-      playPauseBtn.addEventListener('click', () => {
-        if (video.paused) {
-          video.play();
-          playPauseBtn.textContent = '❚❚';
-        } else {
-          video.pause();
-          playPauseBtn.textContent = '▶';
-        }
-      });
-
-      muteBtn.addEventListener('click', () => {
-        if (video.muted) {
-          video.muted = false;
-          muteBtn.textContent = '🔊';
-        } else {
-          video.muted = true;
-          muteBtn.textContent = '🔇';
-        }
-      });
-    }
   </script>
 </body>
 </html>
