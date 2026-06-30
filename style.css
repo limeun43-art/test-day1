@@ -114,31 +114,6 @@ body {
 }
 
 /* --- Sub-Components --- */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 6px 14px;
-  border-radius: 100px;
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--text-secondary);
-  margin-bottom: 24px;
-  text-transform: uppercase;
-}
-
-.badge-dot {
-  width: 6px;
-  height: 6px;
-  background-color: #ff4b82;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #ff4b82;
-  animation: pulse 2s infinite;
-}
 
 .title {
   font-size: 3.2rem;
