@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내 첫번째 아이디어</title>
+  <meta name="description" content="세상을 바꿀 나의 첫 번째 아이디어를 기록하고 확인하는 공간입니다.">
+  
+  <!-- Modern Typography (Pretendard & Outfit) -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css?v=2.0">
+</head>
+<body>
+  <!-- Decorative Background Glows -->
+  <div class="bg-glow bg-glow-1" id="glow1"></div>
+  <div class="bg-glow bg-glow-2" id="glow2"></div>
+
+  <main class="container">
+    <div class="card" id="ideaCard">
+      <div class="card-border"></div>
+      <div class="card-content">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>My Project #1</span>
+        </div>
+        <h1 class="title" id="mainTitle">내 첫번째 아이디어</h1>
+        <p class="subtitle">위대한 여정은 언제나 단순한 생각 하나에서 시작됩니다.</p>
+        <div class="video-container">
+          <video id="rabbitVideo" src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Big_Buck_Bunny_alt.webm" autoplay loop muted playsinline></video>
+          <div class="video-controls">
+            <button class="control-btn" id="playPauseBtn" aria-label="재생/일시정지">❚❚</button>
+            <button class="control-btn" id="muteBtn" aria-label="음소거/음소거해제">🔇</button>
+          </div>
+        </div>
+        <button class="action-btn" id="startBtn">시작하기</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Premium Mouse Interaction (Glow effect following mouse)
+    const card = document.getElementById('ideaCard');
+    
+    document.addEventListener('mousemove', (e) => {
+      const { clientX, clientY } = e;
+      
+      // Move background glows slightly for parallax effect
+      const glow1 = document.getElementById('glow1');
+      const glow2 = document.getElementById('glow2');
+      
+      const xPercent = (clientX / window.innerWidth - 0.5) * 30;
+      const yPercent = (clientY / window.innerHeight - 0.5) * 30;
+      
+      if (glow1) glow1.style.transform = `translate(${xPercent}px, ${yPercent}px)`;
+      if (glow2) glow2.style.transform = `translate(${-xPercent}px, ${-yPercent}px)`;
+      
+      // Mouse glow on card
+      if (card) {
+        const rect = card.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      }
+    });
+
+    // Button click interactive effect
+    const startBtn = document.getElementById('startBtn');
+    if (startBtn) {
+      startBtn.addEventListener('click', () => {
+        startBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          startBtn.style.transform = '';
+          alert('당신의 멋진 아이디어를 응원합니다! 🚀');
+        }, 150);
+      });
+    }
+
+    // Video Custom Controls
+    const video = document.getElementById('rabbitVideo');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const muteBtn = document.getElementById('muteBtn');
+
+    if (video && playPauseBtn && muteBtn) {
+      playPauseBtn.addEventListener('click', () => {
+        if (video.paused) {
+          video.play();
+          playPauseBtn.textContent = '❚❚';
+        } else {
+          video.pause();
+          playPauseBtn.textContent = '▶';
+        }
+      });
+
+      muteBtn.addEventListener('click', () => {
+        if (video.muted) {
+          video.muted = false;
+          muteBtn.textContent = '🔊';
+        } else {
+          video.muted = true;
+          muteBtn.textContent = '🔇';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
