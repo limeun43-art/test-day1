@@ -17,6 +17,27 @@
   <div class="bg-glow bg-glow-1" id="glow1"></div>
   <div class="bg-glow bg-glow-2" id="glow2"></div>
 
+  <!-- Moon and Rabbit Scene -->
+  <div class="moon-scene">
+    <div class="moon"></div>
+    <div class="rabbit-container">
+      <div class="rabbit">
+        <div class="ear ear-left"></div>
+        <div class="ear ear-right"></div>
+        <div class="head">
+          <div class="eye"></div>
+          <div class="blush"></div>
+        </div>
+        <div class="body"></div>
+        <div class="arm-pestle">
+          <div class="arm"></div>
+          <div class="pestle"></div>
+        </div>
+      </div>
+      <div class="mortar"></div>
+    </div>
+  </div>
+
   <main class="container">
     <div class="card" id="ideaCard">
       <div class="card-border"></div>
@@ -24,6 +45,7 @@
 
         <h1 class="title" id="mainTitle">오늘도 힘내세요!</h1>
         <p class="subtitle">위대한 여정은 언제나 단순한 생각 하나에서 시작됩니다.</p>
+        <button class="action-btn next-btn" id="nextBtn">다음 문장 보기</button>
         <div class="image-container">
           <img src="giraffe.png" alt="Giraffe" id="giraffeImg">
         </div>
@@ -70,6 +92,92 @@
         }, 150);
       });
     }
+
+    // Next Sentence Button logic
+    const nextBtn = document.getElementById('nextBtn');
+    const mainTitle = document.getElementById('mainTitle');
+    
+    const items = [
+      {
+        text: '오늘도 힘내세요!',
+        btnBg: 'linear-gradient(135deg, #fde047 0%, #ca8a04 100%)', // Gold/Yellow (Default)
+        btnColor: '#080710',
+        shadow: 'rgba(254, 215, 170, 0.2)'
+      },
+      {
+        text: '잘하고 있어',
+        btnBg: 'linear-gradient(135deg, #34d399 0%, #059669 100%)', // Emerald Green
+        btnColor: '#ffffff',
+        shadow: 'rgba(52, 211, 153, 0.3)'
+      },
+      {
+        text: '오늘도 해냈어요!',
+        btnBg: 'linear-gradient(135deg, #60a5fa 0%, #2563eb 100%)', // Vibrant Blue
+        btnColor: '#ffffff',
+        shadow: 'rgba(96, 165, 250, 0.3)'
+      },
+      {
+        text: '조금씩 나아지고 있어요',
+        btnBg: 'linear-gradient(135deg, #c084fc 0%, #7c3aed 100%)', // Purple
+        btnColor: '#ffffff',
+        shadow: 'rgba(192, 132, 252, 0.3)'
+      }
+    ];
+    
+    let currentIndex = 0;
+    
+    if (nextBtn && mainTitle) {
+      nextBtn.addEventListener('click', () => {
+        // Add click scale effect
+        nextBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          nextBtn.style.transform = '';
+        }, 150);
+        
+        // Move to next sentence
+        currentIndex = (currentIndex + 1) % items.length;
+        const currentItem = items[currentIndex];
+        
+        // Apply text
+        mainTitle.textContent = currentItem.text;
+        
+        // Apply colors dynamically
+        nextBtn.style.background = currentItem.btnBg;
+        nextBtn.style.color = currentItem.btnColor;
+        nextBtn.style.boxShadow = `0 10px 20px ${currentItem.shadow}`;
+      });
+    }
+
+    // Twinkling Stars Background initialization
+    function initStars() {
+      const container = document.createElement('div');
+      container.className = 'stars-container';
+      document.body.appendChild(container);
+      
+      const starCount = 80;
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        // Position randomly using vw and vh units
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.top = `${Math.random() * 100}vh`;
+        
+        // Random size between 1px and 3.5px
+        const size = Math.random() * 2.5 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        
+        // Random animation timing for natural twinkling effect
+        const duration = Math.random() * 3 + 2; // 2s to 5s
+        const delay = Math.random() * 4;       // 0s to 4s
+        star.style.animation = `twinkle ${duration}s infinite ease-in-out ${delay}s`;
+        
+        container.appendChild(star);
+      }
+    }
+    
+    initStars();
 
   </script>
 </body>
