@@ -343,15 +343,20 @@ body {
   box-shadow: inset -2px -2px 4px rgba(226, 232, 240, 0.8);
 }
 
-/* Eye */
+/* Eye (Smiling Arc: ⌒) */
 .moon-scene .rabbit .head .eye {
   position: absolute;
-  top: 8px;
+  top: 6px;
   right: 5px;
-  width: 3px;
-  height: 3px;
-  background: #2d3748;
-  border-radius: 50%;
+  width: 6px;
+  height: 4px;
+  background: transparent;
+  border: 2px solid #2d3748;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 4px 4px 0 0;
+  transform: rotate(5deg);
 }
 
 /* Blush */
@@ -364,6 +369,20 @@ body {
   background: #fda4af;
   border-radius: 50%;
   opacity: 0.8;
+}
+
+/* Mouth (Smiling Cup: ∪) */
+.moon-scene .rabbit .head .mouth {
+  position: absolute;
+  top: 12px;
+  right: 4px;
+  width: 5px;
+  height: 4px;
+  background: transparent;
+  border: 1.8px solid #2d3748;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  transform: rotate(-10deg);
 }
 
 .moon-scene .rabbit .ear {
