@@ -312,12 +312,42 @@ body {
   border-radius: 50%;
 }
 
+/* Mortar Splash Particles */
+.moon-scene .mortar .splash {
+  position: absolute;
+  top: -2px;
+  width: 4px;
+  height: 4px;
+  background-color: #fffbe6;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  box-shadow: 0 0 3px #fffbe6;
+}
+
+.moon-scene .mortar .splash-1 {
+  left: 6px;
+  animation: splashL 1.4s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
+}
+
+.moon-scene .mortar .splash-2 {
+  left: 12px;
+  animation: splashM 1.4s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
+}
+
+.moon-scene .mortar .splash-3 {
+  left: 18px;
+  animation: splashR 1.4s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
+}
+
 .moon-scene .rabbit {
   position: absolute;
   bottom: 0;
   left: 15px;
   width: 40px;
   height: 60px;
+  transform-origin: bottom center;
+  animation: bodyBounce 1.4s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
 .moon-scene .rabbit .body {
@@ -478,6 +508,66 @@ body {
   0%, 80%, 100% { transform: rotate(0deg); }
   85%, 95% { transform: rotate(12deg); }
   90% { transform: rotate(5deg); }
+}
+
+@keyframes bodyBounce {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  30% {
+    transform: scaleX(0.95) scaleY(1.05) translateY(-2px);
+  }
+  70% {
+    transform: scaleX(1.08) scaleY(0.88) translateY(0);
+  }
+  85% {
+    transform: scaleX(0.98) scaleY(1.02) translateY(-0.8px);
+  }
+}
+
+@keyframes splashL {
+  0%, 68%, 95%, 100% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+  72% {
+    transform: translate(-8px, -14px) scale(1.3);
+    opacity: 0.95;
+  }
+  85% {
+    transform: translate(-14px, -18px) scale(0.6);
+    opacity: 0.4;
+  }
+}
+
+@keyframes splashM {
+  0%, 68%, 95%, 100% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+  72% {
+    transform: translate(0, -20px) scale(1.3);
+    opacity: 0.95;
+  }
+  85% {
+    transform: translate(0, -25px) scale(0.6);
+    opacity: 0.4;
+  }
+}
+
+@keyframes splashR {
+  0%, 68%, 95%, 100% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+  72% {
+    transform: translate(8px, -14px) scale(1.3);
+    opacity: 0.95;
+  }
+  85% {
+    transform: translate(14px, -18px) scale(0.6);
+    opacity: 0.4;
+  }
 }
 
 @media (max-width: 768px) {
